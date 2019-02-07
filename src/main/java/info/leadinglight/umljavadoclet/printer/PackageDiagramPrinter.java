@@ -16,6 +16,7 @@ public class PackageDiagramPrinter extends PumlDiagramPrinter {
     
     public void generate() {
         start();
+//        leftToRight();
         // Layout of packages is really, really bad.
         // Would love to show relationships between packages, but it is just awful.
         //noPackagesOption();

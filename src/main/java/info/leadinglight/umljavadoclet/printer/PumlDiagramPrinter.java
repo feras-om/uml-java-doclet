@@ -28,6 +28,10 @@ public abstract class PumlDiagramPrinter extends Printer {
         printLineTypeOption();
     }
     
+    public void leftToRight() {
+        println("left to right direction");
+    }
+    
     public void noPackagesOption() {
         println("set namespaceSeparator none");
     }
