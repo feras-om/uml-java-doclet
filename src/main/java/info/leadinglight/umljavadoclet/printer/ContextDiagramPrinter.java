@@ -27,7 +27,7 @@ public class ContextDiagramPrinter extends PumlDiagramPrinter {
     private void addContextClass(ModelClass modelClass) {
         // TODO Show in different color.
         String filepath = classFilepath(modelClass, modelClass);
-        classDefinition(modelClass, true, filepath, null, true, true, true, false, true);
+        classDefinition(modelClass, true, filepath, null, true, false, true, false, true);
         _classes.add(modelClass);
     }
     
