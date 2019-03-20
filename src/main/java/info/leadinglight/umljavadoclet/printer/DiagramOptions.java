@@ -24,7 +24,7 @@ public class DiagramOptions {
         _lineType = lineType;
     }
     
-    public HashSet<String> _excludepattern = new HashSet();
+    public static HashSet<String> _excludepattern = new HashSet();
     public void setExcludepattern(String[] option) {
         if (option[0].equals(OPTION_EXCLUDEPATTERN_TYPE)) {
         	String pattern = option[1]; // "^Embeddable.*$"
@@ -39,7 +39,7 @@ public class DiagramOptions {
         }
     }
     
-    public boolean matchesExcludepatterns(String s) {
+    public static boolean matchesExcludepatterns(String s) {
 		boolean doit = false;
 		for (String it : _excludepattern) {
 			//TODO: use regex matcher

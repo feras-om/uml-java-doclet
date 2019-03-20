@@ -113,6 +113,9 @@ public class Model {
 			modelClass.map();
 			if (! blacklistedByAnnotation(modelClass))
 				_classes.put(fullName, modelClass);
+			else
+				System.out.println("Exclude ModelClass from creation (" + fullName + ")" );
+
 		}
 		return modelClass;
 	}
@@ -128,15 +131,15 @@ public class Model {
 			if (! blacklistedByAnnotation(modelClass))
 				_classes.put(fullName, modelClass);
 			else
-				System.out.println("Exclude class from mapping (" + fullName + ")" );
+				System.out.println("Exclude ModelClass from mapping (" + fullName + ")" );
 		}
 	}
 
-	public boolean blacklistedByAnnotation(ModelClass x ) {
+	public static boolean blacklistedByAnnotation(ModelClass x ) {
 		List<String> annotations = x.annotations();
 		boolean doIt = true;
 		for (String annotation: annotations) {
-			doIt = _options.matchesExcludepatterns(annotation);
+			doIt = DiagramOptions.matchesExcludepatterns(annotation);
 			if(doIt)
 				break;
 		}
@@ -151,6 +154,8 @@ public class Model {
 			ModelClass modelClass = _classes.get(fullName);
 			if (modelClass != null)
 				modelClass.map();
+			else
+				System.out.println("ModelClass was excluded from mapping (" + fullName + ")" );
 		}
 	}
 
@@ -161,9 +166,12 @@ public class Model {
 			ModelPackage modelPackage =_packages.get(fullName);
 			if (modelPackage == null) {
 				modelPackage = new ModelPackage(this, packageDoc);
-				System.out.println("Collect Package (" + fullName + ")");
 				_packages.put(fullName, modelPackage);
 			}
+            String classFullName = ModelClass.fullName(classDoc);
+            ModelClass modelClass = _classes.get(classFullName);
+            if (modelClass != null)
+            	modelPackage.addClass(modelClass);
 		}
 	}
 

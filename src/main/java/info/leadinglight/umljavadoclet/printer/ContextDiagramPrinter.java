@@ -37,7 +37,7 @@ public class ContextDiagramPrinter extends PumlDiagramPrinter {
 		if (!otherClass.fullName().startsWith("java.util.")
 				&& !otherClass.fullName().startsWith("java.math.")
 				&& !otherClass.fullName().startsWith("java.io.")
-				&& !_model.blacklistedByAnnotation(otherClass)
+				&& !Model.blacklistedByAnnotation(otherClass)
 				) {
 			if (isRelationshipVisible(rel)) {
 				// Only draw the class on the other side of the relationship if it hasn't been added yet.

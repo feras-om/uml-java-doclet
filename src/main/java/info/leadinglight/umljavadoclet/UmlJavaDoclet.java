@@ -70,11 +70,8 @@ public class UmlJavaDoclet extends Standard {
 		// Generate the diagrams.
 		System.out.println("Using PlantUML version " + Version.versionString());
 		System.out.println("Generating diagrams...");
-		System.out.println("Context diagram");
 		generateContextDiagrams(model, options);
-		System.out.println("Package diagram");
 		generatePackageDiagrams(model, options);
-		System.out.println("Overview diagram");
 		generateOverviewDiagram(model, options);
 
 		return true;
@@ -149,7 +146,6 @@ public class UmlJavaDoclet extends Standard {
 
 	private static void generatePackageDiagrams(Model model, DiagramOptions options) {
 		for (ModelPackage modelPackage: model.packages()) {
-			System.out.println("ModelPackage (" + modelPackage.fullName() + ")" );
 			generatePackageDiagram(model, modelPackage, options);
 		}
 	}
