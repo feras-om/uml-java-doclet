@@ -1,5 +1,7 @@
 package info.leadinglight.umljavadoclet.printer;
 
+import java.util.HashSet;
+
 /**
  * Handle options specific to uml-java-doclet.
  */
@@ -20,6 +22,33 @@ public class DiagramOptions {
     
     public void setLineType(LineType lineType) {
         _lineType = lineType;
+    }
+    
+    public HashSet<String> _excludepattern = new HashSet();
+    public void setExcludepattern(String[] option) {
+        if (option[0].equals(OPTION_EXCLUDEPATTERN_TYPE)) {
+        	String pattern = option[1]; // "^Embeddable.*$"
+        	_excludepattern.add(pattern);
+        	System.out.println("Exclude Pattern ("+pattern+")");
+        }
+        //TODO: Remove, just for testing
+        _excludepattern.add("Embeddable");
+        _excludepattern.add("Elephant");
+        for (String s : _excludepattern) {
+        	System.out.println("Excludepattern configured: " + s);
+        }
+    }
+    
+    public boolean matchesExcludepatterns(String s) {
+		boolean doit = false;
+		for (String it : _excludepattern) {
+			//TODO: use regex matcher
+			if (s.startsWith(it)) {
+				doit = true;
+				break;
+			}					
+		}
+		return doit;
     }
     
     public void setLineType(String[] option) {
@@ -46,6 +75,8 @@ public class DiagramOptions {
     }
     
     private LineType _lineType;
+
+    private static final String OPTION_EXCLUDEPATTERN_TYPE = "-excludepattern";
 
     private static final String OPTION_LINE_TYPE = "-linetype";
     private static final String OPTION_LINE_TYPE_ORTHO = "ortho";
@@ -108,6 +139,7 @@ public class DiagramOptions {
         for (String[] option: options) {
             setLineType(option);
             setDependenciesVisibility(option);
+            setExcludepattern(option);
         }
     }
     

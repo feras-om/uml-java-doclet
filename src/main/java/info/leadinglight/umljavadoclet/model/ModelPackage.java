@@ -73,8 +73,13 @@ public class ModelPackage {
     // Mapping
     
     private void mapRelationships() {
+    	if (_classes.isEmpty())
+			System.out.println("No classes in Modelpackage" );
+
         for (ModelClass modelClass: _classes) {
+			System.out.println("Modelpackage ModelClass (" + modelClass.fullName() + ")" );
             for (ModelRel rel: modelClass.relationships()) {
+    			System.out.println("Modelpackage ModelClass ModelRel (" + rel.source().fullName() + " -> " + rel.destination().fullName() + ")" );
                 if (rel.source() == modelClass) {
                     ModelClass dest = rel.destination();
                     ModelPackage destPackage = dest.modelPackage();

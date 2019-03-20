@@ -39,7 +39,9 @@ public class PackageDiagramPrinter extends PumlDiagramPrinter {
     }
     
     public void addRelationships(ModelPackage modelPackage) {
+		System.out.println("ModelPackage addRelationships (" + modelPackage.fullName() + ")" );
         for (ModelClass modelClass: modelPackage.classes()) {
+    		System.out.println("ModelPackage ModelClass (" + modelClass.fullName() + ")" );
             // Only draw the relationships between the classes in the package.
             for (ModelRel rel: modelClass.relationships()) {
                 if (rel.source() == modelClass && rel.destination().modelPackage() == modelPackage) {
