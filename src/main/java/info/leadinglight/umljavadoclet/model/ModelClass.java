@@ -480,8 +480,8 @@ public class ModelClass {
     
     private void mapSourceRel(ModelRel rel) {
     	if (Model.blacklistedByAnnotation(rel.destination()))
-    		return;
-        _rels.add(rel);
+    	return;
+     
         // Do not add relationships back to ourselves more than once.
         ModelClass dest = rel.destination();
         if (this != dest) {
