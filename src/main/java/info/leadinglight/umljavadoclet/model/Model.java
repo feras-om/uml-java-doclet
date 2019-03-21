@@ -113,9 +113,6 @@ public class Model {
 			modelClass.map();
 			if (! blacklistedByAnnotation(modelClass))
 				_classes.put(fullName, modelClass);
-			else
-				System.out.println("Exclude ModelClass from creation (" + fullName + ")" );
-
 		}
 		return modelClass;
 	}
@@ -130,8 +127,6 @@ public class Model {
 			String fullName = ModelClass.fullName(classDoc);
 			if (! blacklistedByAnnotation(modelClass))
 				_classes.put(fullName, modelClass);
-			else
-				System.out.println("Exclude ModelClass from mapping (" + fullName + ")" );
 		}
 	}
 
@@ -154,8 +149,6 @@ public class Model {
 			ModelClass modelClass = _classes.get(fullName);
 			if (modelClass != null)
 				modelClass.map();
-			else
-				System.out.println("ModelClass was excluded from mapping (" + fullName + ")" );
 		}
 	}
 

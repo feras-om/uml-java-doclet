@@ -29,13 +29,11 @@ public class DiagramOptions {
         if (option[0].equals(OPTION_EXCLUDEPATTERN_TYPE)) {
         	String pattern = option[1];
         	_excludepattern.add(pattern);
-        	System.out.println("Exclude Pattern ("+pattern+")");
         }
         //TODO: Remove, just for testing
         _excludepattern.add("Embeddable");
         _excludepattern.add("Elephant");
         for (String s : _excludepattern) {
-        	System.out.println("Excludepattern configured: " + s);
         }
     }
     
