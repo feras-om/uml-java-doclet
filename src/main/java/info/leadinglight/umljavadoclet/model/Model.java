@@ -135,11 +135,11 @@ public class Model {
 		}
 	}
 
-	public static boolean blacklistedByAnnotation(ModelClass x ) {
-		List<String> annotations = x.annotations();
+	public boolean blacklistedByAnnotation(ModelClass modelclass ) {
+		List<String> annotations = modelclass.annotations();
 		boolean doIt = true;
 		for (String annotation: annotations) {
-			doIt = DiagramOptions.matchesExcludepatterns(annotation);
+			doIt = _options.matchesExcludepatterns(annotation);
 			if(doIt)
 				break;
 		}

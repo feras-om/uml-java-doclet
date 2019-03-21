@@ -276,6 +276,12 @@ public class ModelClass {
         return _methods;
     }
         
+    // Update Model
+    
+    public void addRelationship(ModelRel rel) {
+        _rels.add(rel);
+    }
+    
     // Mapping
     
     private void mapInternals() {
@@ -479,13 +485,13 @@ public class ModelClass {
     }
     
     private void mapSourceRel(ModelRel rel) {
-    	if (Model.blacklistedByAnnotation(rel.destination()))
+    	if (_model.blacklistedByAnnotation(rel.destination()))
     	return;
      
         // Do not add relationships back to ourselves more than once.
         ModelClass dest = rel.destination();
         if (this != dest) {
-        	_rels.add(rel);
+            dest.addRelationship(rel);
         }
     }
     

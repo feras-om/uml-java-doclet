@@ -65,7 +65,7 @@ public class ModelPackage {
     // Update model
     
     public void addClass(ModelClass modelClass) {
-    	if (Model.blacklistedByAnnotation(modelClass))
+    	if (_model.blacklistedByAnnotation(modelClass))
     		return;
         if (!_classes.contains(modelClass)) {
             _classes.add(modelClass);

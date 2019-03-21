@@ -458,6 +458,6 @@ public abstract class PumlDiagramPrinter extends Printer {
 		return sb.toString();
 	}
 
-	private final Model _model;
+	protected final Model _model;
     private final DiagramOptions _options;
 }
