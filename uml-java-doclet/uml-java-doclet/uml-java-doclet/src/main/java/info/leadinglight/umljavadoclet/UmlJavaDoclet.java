@@ -96,6 +96,7 @@ public class UmlJavaDoclet extends Standard {
 
 	public static boolean validOptions(String[][] options, DocErrorReporter reporter) {
 		// Iterate through all of the options, checking to see if an option is valid.
+		
 		List<String[]> standardOptions = new ArrayList<>();
 		for (String[] option: options) {
 			String name = option[0];
